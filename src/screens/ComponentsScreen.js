@@ -4,7 +4,7 @@ import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
 // import "./ComponentsScreenStyles.css" as styles;
 
 const ComponentsScreen = (props) => {
-  const myName = "John McNamara";
+  const myName = "NameHere";
   return (
     <>
       <View style={styles.viewStyle}>
