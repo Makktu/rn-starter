@@ -1,5 +1,12 @@
 import React from "react";
-import { Text, StyleSheet, View, Button, TouchableOpacity } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  Button,
+  TouchableOpacity,
+  StatusBar,
+} from "react-native";
 
 const clickHandler = (pressed) => {
   console.log(pressed, "pressed!");
@@ -17,6 +24,10 @@ const HomeScreen = ({ navigation }) => {
       <Button
         title="Go To List Demo"
         onPress={() => navigation.navigate("List")}
+      />
+      <Button
+        title="Go To Image Screen"
+        onPress={() => navigation.navigate("Images")}
       />
     </View>
   );
