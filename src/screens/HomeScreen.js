@@ -8,14 +8,9 @@ import {
   StatusBar,
 } from "react-native";
 
-const clickHandler = (pressed) => {
-  console.log(pressed, "pressed!");
-};
-
 const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Hello</Text>
       <Button
         style={styles.button}
         title="Go To Components Demo"
@@ -29,6 +24,10 @@ const HomeScreen = ({ navigation }) => {
         title="Go To Image Screen"
         onPress={() => navigation.navigate("Images")}
       />
+      <Button
+        title="Go To Counter Screen"
+        onPress={() => navigation.navigate("Counter")}
+      />
     </View>
   );
 };
@@ -36,12 +35,12 @@ const HomeScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   text: {
     fontSize: 50,
-    // color: "whitesmoke",
+    color: "whitesmoke",
   },
-  // container: {
-  //   backgroundColor: "black",
-  //   height: "100%",
-  // },
+  container: {
+    backgroundColor: "black",
+    height: "100%",
+  },
   button: {
     alignItems: "center",
     justifyContent: "center",
