@@ -5,7 +5,7 @@ const ImageDetail = ({ title, image, score }) => {
   return (
     <View>
       <Text style={styles.textStyle}>{title}</Text>
-      <Image source={image} />
+      <Image style={styles.image} source={image} />
       <Text style={styles.numberStyle}>
         {score ? "Your Score:" : null} {score ? score : null}
       </Text>
@@ -22,9 +22,13 @@ const styles = StyleSheet.create({
   },
   numberStyle: {
     fontSize: 30,
-    textAlign: "right",
+    textAlign: "center",
     marginTop: 10,
     color: "yellow",
+  },
+  image: {
+    width: "80%",
+    alignSelf: "center",
   },
 });
 

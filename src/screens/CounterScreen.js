@@ -22,15 +22,10 @@ const CounterScreen = () => {
 
   return (
     <View style={styles.view}>
-      <TouchableOpacity onPress={() => clickHandler("Inc")}>
-        <Text style={styles.text}>Increase</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => clickHandler("Dec")}>
-        <Text style={styles.text}>Decrease</Text>
-      </TouchableOpacity>
+      <Button onPress={() => clickHandler("Inc")} title="Increase" />
+      <Button onPress={() => clickHandler("Dec")} title="Decrease" />
       <Text style={styles.text}>Current Count: {count}</Text>
       <ImageDetail
-        style={styles.arrows}
         image={arrow == "" ? null : arrow == "up" ? Uparrow : Downarrow}
       />
     </View>
@@ -39,9 +34,10 @@ const CounterScreen = () => {
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 50,
+    fontSize: 30,
     color: "orangered",
     alignItems: "center",
+    alignSelf: "center",
   },
   arrows: {
     alignItems: "center",
