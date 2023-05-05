@@ -28,7 +28,6 @@ const ListScreen = () => {
       keyExtractor={(enemy) => enemy.name}
       data={enemies}
       renderItem={({ item }) => {
-        console.log(item);
         return (
           <View>
             <Text style={styles.placement}>
