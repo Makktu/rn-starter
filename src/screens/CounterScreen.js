@@ -1,32 +1,40 @@
-import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Button } from "react-native";
-
+import React, { useReducer } from "react";
+import { View, Text, StyleSheet, Button } from "react-native";
 import ImageDetail from "../components/ImageDetail";
-
 import Uparrow from "../../assets/up-arrow.png";
 import Downarrow from "../../assets/down-arrow.png";
 
-const CounterScreen = () => {
-  const [count, setCount] = useState(0);
-  const [arrow, setArrow] = useState("");
+const reducer = (state, action) => {
+  // state === {count: number, arrow: "up" || "down"}
+  // action === {type: "change_count" && "change_arrow", payload: 1 && "up" || "down"}
+  switch (action.type) {
+    case "increase":
+      return { ...state, count: state.count + action.payload, arrow: "up" };
+    case "decrease":
+      return { ...state, count: state.count + action.payload, arrow: "down" };
+    default:
+      return state;
+  }
+};
 
-  const clickHandler = (upOrDown) => {
-    if (upOrDown == "Inc") {
-      setCount(count + 1);
-      setArrow("up");
-    } else {
-      setCount(count - 1);
-      setArrow("down");
-    }
-  };
+const CounterScreen = () => {
+  const [state, dispatch] = useReducer(reducer, { count: 0, arrow: "" });
 
   return (
     <View style={styles.view}>
-      <Button onPress={() => clickHandler("Inc")} title="Increase" />
-      <Button onPress={() => clickHandler("Dec")} title="Decrease" />
-      <Text style={styles.text}>Current Count: {count}</Text>
+      <Button
+        onPress={() => dispatch({ type: "increase", payload: 1 })}
+        title="Increase"
+      />
+      <Button
+        onPress={() => dispatch({ type: "decrease", payload: -1 })}
+        title="Decrease"
+      />
+      <Text style={styles.text}>Current Count: {state.count}</Text>
       <ImageDetail
-        image={arrow == "" ? null : arrow == "up" ? Uparrow : Downarrow}
+        image={
+          state.arrow == "" ? null : state.arrow == "up" ? Uparrow : Downarrow
+        }
       />
     </View>
   );
